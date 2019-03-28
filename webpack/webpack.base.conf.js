@@ -35,6 +35,10 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
+          outputPath: (url, resourcePath, context) => {
+            const relativePath = path.relative(context, resourcePath);
+            return relativePath.substr(4);
+          },
           name: '[name].[ext]',
         }
       },
@@ -42,7 +46,11 @@ module.exports = {
         test: /\.(ttf|eot|woff)$/,
         loader: 'file-loader',
         options: {
-          name: 'fonts/[name]/[name].[ext]',
+          outputPath: (url, resourcePath, context) => {
+            const relativePath = path.relative(context, resourcePath);
+            return relativePath.substr(4);
+          },
+          name: '[name].[ext]',
         }
       },
       {
@@ -96,7 +104,7 @@ module.exports = {
       filename: './index.html'
     }),
     new CopyWebpackPlugin([
-      { from: `${PATHS.src}/img`, to: 'img' },
+      // { from: `${PATHS.src}/img`, to: 'img' },
       { from: `${PATHS.src}/static`, to: '' },
       // { from: `${PATHS.src}/fonts`, to: 'fonts' },
     ]),
