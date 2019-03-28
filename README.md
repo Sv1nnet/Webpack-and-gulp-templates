@@ -1,3 +1,3 @@
-# training-html-css-panza
+# Gulp and webpack
 
-Just traning html/css and also trying  cumstom css grid
+Also I added cumstom grid
