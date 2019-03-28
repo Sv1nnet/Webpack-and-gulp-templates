@@ -36,8 +36,9 @@ module.exports = {
         loader: 'file-loader',
         options: {
           outputPath: (url, resourcePath, context) => {
-            const relativePath = path.relative(context, resourcePath);
-            return relativePath.substr(4);
+            // For currect path to files path have to be reformated
+            const relativePath = path.relative(context, resourcePath).substr(4).split('\\').join('/');
+            return relativePath;
           },
           name: '[name].[ext]',
         }
@@ -47,8 +48,9 @@ module.exports = {
         loader: 'file-loader',
         options: {
           outputPath: (url, resourcePath, context) => {
-            const relativePath = path.relative(context, resourcePath);
-            return relativePath.substr(4);
+            // For currect path to files path have to be reformated
+            const relativePath = path.relative(context, resourcePath).substr(4).split('\\').join('/');
+            return relativePath;
           },
           name: '[name].[ext]',
         }
@@ -101,7 +103,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       hash: false,
       template: `${PATHS.src}/index.html`,
-      filename: './index.html'
+      filename: './index.html',
+      inject: false,  // no autroinject into html
     }),
     new CopyWebpackPlugin([
       // { from: `${PATHS.src}/img`, to: 'img' },
