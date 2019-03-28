@@ -39,6 +39,13 @@ module.exports = {
         }
       },
       {
+        test: /\.(ttf|eot|woff)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'fonts/[name]/[name].[ext]',
+        }
+      },
+      {
         test: /\.(sass|scss)$/,
         use: [
           {
@@ -91,7 +98,7 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: `${PATHS.src}/img`, to: 'img' },
       { from: `${PATHS.src}/static`, to: '' },
-      { from: `${PATHS.src}/fonts`, to: 'fonts' },
+      // { from: `${PATHS.src}/fonts`, to: 'fonts' },
     ]),
   ],
 };
