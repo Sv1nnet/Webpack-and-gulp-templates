@@ -1,0 +1,149 @@
+.container
+  max-width: 1200px
+  margin: 0 auto
+  
+.row
+  width: 100%
+  &:after
+    content: ''
+    display: table
+    clear: both
+  & .col
+    padding:
+      left: 15px
+      right: 15px
+    position: relative
+    float: left
+    box-sizing: border-box
+    min-height: 1px
+    &:after
+      content: ''
+      clear: both
+      display: block
+
+/*------------- Extra small screen -------------*/
+@media only screen and (max-width: 575px)
+  .row
+    & .offset-right
+      @for $i from 12 through 1
+        &-xs#{$i}
+          margin-left: -$i / 12 * 100% !important
+
+    & .offset-left
+      @for $i from 1 through 12
+        &-xs#{$i}
+          margin-left: $i / 12 * 100% !important
+
+    & .xs1, .xs2, .xs3, .xs4, .xs5, .xs6, .xs7, .xs8, .xs9, .xs10, .xs11, .xs12
+      margin-left: auto
+      left: 0
+      right: 0
+
+    @for $i from 1 through 12
+      .xs#{$i}
+        width: $i / 12 * 100%
+      
+  .hide-on-xs
+      display: none !important
+
+/*------------- Small screen -------------*/
+@media only screen and (min-width: 576px)
+  .row
+    & .offset-right
+      @for $i from 12 through 1
+        &-s#{$i}
+          margin-left: -$i / 12 * 100% !important
+        
+    & .offset-left
+      @for $i from 1 through 12
+        &-s#{$i}
+          margin-left: $i / 12 * 100% !important
+
+    & .s1, .s2, .s3, .s4, .s5, .s6, .s7, .s8, .s9, .s10, .s11, .s12
+      margin-left: auto
+      left: 0
+      right: 0
+
+    @for $i from 1 through 12
+      .s#{$i}
+        width: $i / 12 * 100%
+      
+  .hide-on-s
+      display: none !important
+
+/*------------- Medium screen -------------*/
+@media only screen and (min-width: 768px)
+  .row
+    & .offset-right
+      @for $i from 12 through 1
+        &-m#{$i}
+          margin-left: -$i / 12 * 100% !important
+        
+    & .offset-left
+      @for $i from 1 through 12
+        &-m#{$i}
+          margin-left: $i / 12 * 100% !important
+
+    & .m1, .m2, .m3, .m4, .m5, .m6, .m7, .m8, .m9, .m10, .m11, .m12
+      margin-left: auto
+      left: 0
+      right: 0
+
+    @for $i from 1 through 12
+      .m#{$i}
+        width: $i / 12 * 100%
+
+  .hide-on-s
+      display: none !important
+    
+/*------------- Large screen -------------*/
+@media only screen and (min-width: 992px)
+  .row
+    & .offset-right
+      @for $i from 12 through 1
+        &-l#{$i}
+          margin-left: -$i / 12 * 100% !important
+        
+    & .offset-left
+      @for $i from 1 through 12
+        &-l#{$i}
+          margin-left: $i / 12 * 100% !important
+          
+
+    & .l1, .l2, .l3, .l4, .l5, .l6, .l7, .l8, .l9, .l10, .l11, .l12
+      margin-left: auto
+      left: 0
+      right: 0
+
+    @for $i from 1 through 12
+      .l#{$i}
+        width: $i / 12 * 100%
+
+  .hide-on-l
+      display: none !important
+
+/*------------- Extra Large screen -------------*/
+@media only screen and (min-width: 1200px)
+  .row 
+
+    & .offset-right
+      @for $i from 12 through 1
+        &-xl#{$i}
+          margin-left: -$i / 12 * 100% !important
+        
+    & .offset-left
+      @for $i from 1 through 12
+        &-xl#{$i}
+          margin-left: $i / 12 * 100% !important
+
+    & .xl1, .xl2, .xl3, .xl4, .xl5, .xl6, .xl7, .xl8, .xl9, .xl10, .xl11, .xl12
+      margin-left: auto
+      left: 0
+      right: 0
+
+    @for $i from 1 through 12
+      .xl#{$i}
+        width: $i / 12 * 100%
+
+  .hide-on-xl
+      display: none !important
