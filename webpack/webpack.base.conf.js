@@ -3,6 +3,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const FileLoader = require('file-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
@@ -36,7 +37,6 @@ module.exports = {
         loader: 'file-loader',
         options: {
           outputPath: (url, resourcePath, context) => {
-            // For currect path to files path have to be reformated
             const relativePath = path.relative(context, resourcePath).substr(4).split('\\').join('/');
             return relativePath;
           },
@@ -48,7 +48,6 @@ module.exports = {
         loader: 'file-loader',
         options: {
           outputPath: (url, resourcePath, context) => {
-            // For currect path to files path have to be reformated
             const relativePath = path.relative(context, resourcePath).substr(4).split('\\').join('/');
             return relativePath;
           },
@@ -97,19 +96,24 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '/css/[name].css',
+      filename: 'css/[name].css',
     }),
     // Copy HtmlWebpackPlugin and change index.html for another html page
     new HtmlWebpackPlugin({
       hash: false,
       template: `${PATHS.src}/index.html`,
       filename: './index.html',
-      inject: false,  // no autroinject into html
+      // inject: false, 
     }),
     new CopyWebpackPlugin([
-      // { from: `${PATHS.src}/img`, to: 'img' },
+      { from: `${PATHS.src}/img`, to: 'img' },
       { from: `${PATHS.src}/static`, to: '' },
       // { from: `${PATHS.src}/fonts`, to: 'fonts' },
     ]),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      'window.jQuery': 'jquery',
+    })
   ],
 };
