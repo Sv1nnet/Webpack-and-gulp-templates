@@ -1,6 +1,7 @@
 .container
   max-width: 1200px
   margin: 0 auto
+  position: relative
   
 .row
   width: 100%
@@ -8,7 +9,7 @@
     content: ''
     display: table
     clear: both
-  & .col
+  .col
     padding:
       left: 15px
       right: 15px
@@ -47,7 +48,7 @@
       display: none !important
 
 /*------------- Small screen -------------*/
-@media only screen and (min-width: 576px)
+@media only screen and (min-width: 576px) and (max-width: 767px)
   .row
     & .offset-right
       @for $i from 12 through 1
@@ -72,7 +73,7 @@
       display: none !important
 
 /*------------- Medium screen -------------*/
-@media only screen and (min-width: 768px)
+@media only screen and (min-width: 768px) and (max-width: 991px)
   .row
     & .offset-right
       @for $i from 12 through 1
@@ -93,7 +94,7 @@
       .m#{$i}
         width: $i / 12 * 100%
 
-  .hide-on-s
+  .hide-on-m
       display: none !important
     
 /*------------- Large screen -------------*/
